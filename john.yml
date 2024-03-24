@@ -1,5 +1,5 @@
 - name: Ensure Docker is installed and running
-  hosts: john
+  hosts: john_node
   become: yes
   tasks:
     - name: Install required packages for Docker
@@ -32,7 +32,7 @@
         enabled: yes
 
 - name: Changing Docker daemon configuration file network
-  hosts: john
+  hosts: john_node
   tasks:
     - name: Create Docker configuration directory
       file:
@@ -53,7 +53,7 @@
         state: reloaded
 
 - name: Deploy Apache Docker container
-  hosts: john
+  hosts: john_node
   tasks:
     - name: Run Apache Docker container
       docker_container:
